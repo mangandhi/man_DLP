@@ -1,21 +1,54 @@
 #include <stdio.h>
-#include <string.h>
-
-int main() {
-    printf("Finite automata is: a*bb\n");
-    printf("Enter String: ");
-    char str[200];
-    scanf("%s", str);
-
-    int i = 0;
-    while (str[i] == 'a') {
-        i++;
-    }
-    if (str[i] == 'b' && str[i + 1] == 'b' && str[i + 2] == '\0') {
-        printf("Accepted\n");
-    } else {
-        printf("Not Accepted\n");
-    }
+#include<string.h>
+int main() 
+{
+    char a[20];
+    printf("Enter the string : ");
+    scanf("%s",a);
     
+    int n = strlen(a);
+    int x=0;
+    if(n<2)
+    {
+        printf("String is Invalid");
+    }
+    else if(n==2)
+    {
+        if(a[0]=='b' && a[1]=='b')
+            printf("String is Valid");
+        else
+            printf("String is Invalid");
+    }
+    else
+    {
+        if(a[n-1]=='b' && a[n-2]=='b')
+        {
+            for(int i=0;i<n-2;i++)
+            {
+                if(a[i]=='b')
+                {
+                    printf("String is Invalid");
+                    break;
+                }
+                else if(a[i]=='a')
+                {
+                    x++;
+                }
+                else
+                {
+                    printf("String is Invalid");
+                    break;
+                }
+            }
+            if(x==n-2)
+            {
+                printf("String is Valid");
+            }
+        }
+        else 
+        {
+            printf("String is Invalid");
+        }
+    }
     return 0;
 }
